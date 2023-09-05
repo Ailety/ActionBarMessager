@@ -29,7 +29,30 @@ public final class CommandHandler implements CommandExecutor, TabCompleter {
                     }
                     User user = ActionBarMessager.getInstance().getUserManager().getUser((Player) sender);
                     user.setReceiveMessages(!user.isReceiveMessages());
-                    sender.sendMessage(I18n.getPrefixedLocaledMessage("Sender.Commands.Toggle.Success"));
+                    return true;
+                case "ON":
+                    if (!sender.hasPermission("actionbarmessager.command.toggle")) {
+                        sender.sendMessage(I18n.getPrefixedLocaledMessage("Sender.Commands.No-Permission"));
+                        return true;
+                    }
+                    if (!(sender instanceof Player)) {
+                        sender.sendMessage(I18n.getPrefixedLocaledMessage("Sender.Commands.Player-Only-Command"));
+                        return true;
+                    }
+                    User user = ActionBarMessager.getInstance().getUserManager().getUser((Player) sender);
+                    user.setReceiveMessages(true);
+                    return true;
+                case "OFF":
+                    if (!sender.hasPermission("actionbarmessager.command.toggle")) {
+                        sender.sendMessage(I18n.getPrefixedLocaledMessage("Sender.Commands.No-Permission"));
+                        return true;
+                    }
+                    if (!(sender instanceof Player)) {
+                        sender.sendMessage(I18n.getPrefixedLocaledMessage("Sender.Commands.Player-Only-Command"));
+                        return true;
+                    }
+                    User user = ActionBarMessager.getInstance().getUserManager().getUser((Player) sender);
+                    user.setReceiveMessages(false);
                     return true;
                 case "RELOAD":
                     if (!sender.hasPermission("actionbarmessager.command.reload")) {
