@@ -39,8 +39,8 @@ public final class CommandHandler implements CommandExecutor, TabCompleter {
                         sender.sendMessage(I18n.getPrefixedLocaledMessage("Sender.Commands.Player-Only-Command"));
                         return true;
                     }
-                    User user = ActionBarMessager.getInstance().getUserManager().getUser((Player) sender);
-                    user.setReceiveMessages(true);
+                    User useron = ActionBarMessager.getInstance().getUserManager().getUser((Player) sender);
+                    useron.setReceiveMessages(true);
                     return true;
                 case "OFF":
                     if (!sender.hasPermission("actionbarmessager.command.toggle")) {
@@ -51,8 +51,8 @@ public final class CommandHandler implements CommandExecutor, TabCompleter {
                         sender.sendMessage(I18n.getPrefixedLocaledMessage("Sender.Commands.Player-Only-Command"));
                         return true;
                     }
-                    User user = ActionBarMessager.getInstance().getUserManager().getUser((Player) sender);
-                    user.setReceiveMessages(false);
+                    User useroff = ActionBarMessager.getInstance().getUserManager().getUser((Player) sender);
+                    useroff.setReceiveMessages(false);
                     return true;
                 case "RELOAD":
                     if (!sender.hasPermission("actionbarmessager.command.reload")) {
